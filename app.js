@@ -13,6 +13,8 @@ app.listen(port, () => console.log(`Server started on port ${port}`));
 
 app.use(bodyParser.urlencoded({extended: false}))
 
+app.use(express.static(path.join(rootDir, 'public')));
+
 app.use('/admin', adminRoutes);
 app.use(shopRoutes);
 
