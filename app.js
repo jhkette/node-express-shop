@@ -5,9 +5,7 @@ const shopRoutes = require('./routes/shop');
 const path = require('path');
 const rootDir = require('./util/path');
 const errorController = require('./controllers/error')
-
 const app = express();
-
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
