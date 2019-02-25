@@ -13,7 +13,6 @@ exports.postAddProduct = (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   const price = req.body.price;
   const description = req.body.description;
-  //  sequelize magic method - create come from sequelize one to many inbuilt method.
   req.user
     .createProduct({
       title: title,
@@ -37,12 +36,10 @@ exports.getEditProduct = (req, res, next) => {
     return res.redirect('/');
   }
   const prodId = req.params.productId;
-  // magic method - get edit if it is by user
   req.user
     .getProducts({ where: { id: prodId } })
-    // Product.findById(prodId) could use if only want to just edit regardless of user
+    // Product.findById(prodId)
     .then(products => {
-      // we get an array so index is needed
       const product = products[0];
       if (!product) {
         return res.redirect('/');
@@ -79,7 +76,6 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  // magic method. this get the products for the user . get products where userid == product user.id
   req.user
     .getProducts()
     .then(products => {
